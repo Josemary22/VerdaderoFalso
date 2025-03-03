@@ -1,0 +1,55 @@
+ion-content {
+  --background: #C4DAFA;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  justify-content: space-between;
+  height: 10vh;
+}
+
+.big-button-red {
+  --background: red;
+  --color: white;
+  width: 200%;
+  height: 200%;
+  font-size: 20px;
+}
+
+.big-button-green {
+  --background: green;
+  --color: white;
+  width: 200%;
+  height: 200%;
+  font-size: 20px;
+}
+
+.centered-title {
+  text-align: center;
+  color: white;
+  font-size: 50px;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+.question-image {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  height: auto;
+  width: 45%;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+.points-counter {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #0804D4;
+}

@@ -1,0 +1,9 @@
+<ion-content>
+  <div class="points-counter">Puntos: {{ points }}</div>
+  <ion-title class="centered-title">{{ currentQuestion }}</ion-title>
+  <img [src]="currentImage" alt="Imagen de la pregunta" class="question-image">
+  <div class="button-container">
+    <ion-button expand="block" class="big-button-green" (click)="answerQuestion(true)">Verdadero</ion-button>
+    <ion-button expand="block" class="big-button-red" (click)="answerQuestion(false)">Falso</ion-button>
+  </div>
+</ion-content>
