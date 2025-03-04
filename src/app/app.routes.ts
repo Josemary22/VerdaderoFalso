@@ -17,5 +17,9 @@ export const routes: Routes = [
   {
     path:'eso',
     loadComponent: () => import('./eso/eso.component').then((m) => m.EsoComponent),
+  },
+  {
+    path:'resultado/:nombre/:puntos',
+    loadComponent: () => import('./resultado/resultado.component').then((m) => m.ResultadoComponent),
   }
 ];

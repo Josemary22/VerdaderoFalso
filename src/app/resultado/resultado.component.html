@@ -1,0 +1,19 @@
+<ion-content>
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-title>FIN DE LA RONDA</ion-title>
+      </ion-row>
+      <ion-row>
+        <ion-text style="font-weight: bold; margin-bottom: 10px; font-size: 25px" [style.color]="this.puntos === 10 ? 'green' : (this.puntos < 5 ? 'red' : 'orange')">{{ this.puntos === 10 ? '¡Perfecto, 10/10!' : (this.puntos < 5 ? '¡Necesitas mejorar!' : '¡Bien hecho prueba superada!') }}</ion-text>
+      </ion-row>
+      <ion-row>
+        <ion-text>{{ this.nombre }} ha conseguido {{this.puntos}}/10 puntos</ion-text>
+      </ion-row>
+      <ion-row>
+        <ion-button (click)="volverMenu()">Volver al menú</ion-button>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <ion-img style="width: 15%;" src="assets/saint-ignatius-of-loyola-colored-illustration-vector.jpg" alt="Logo Imagen" class="imagen"></ion-img>
+</ion-content>

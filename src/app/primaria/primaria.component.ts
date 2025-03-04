@@ -1,21 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import {IonicModule} from "@ionic/angular";
+import {FormsModule} from "@angular/forms";
+import { saveAs } from 'file-saver';
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-primaria',
     templateUrl: './primaria.component.html',
     styleUrls: ['./primaria.component.scss'],
     standalone: true,
-    imports: [
-        IonicModule
-    ]
+  imports: [
+    IonicModule,
+    FormsModule
+  ]
 })
 export class PrimariaComponent  implements OnInit {
+
   points = 0;
 
-  constructor() { }
+  nombre = "";
 
-  ngOnInit() {}
+  isModalOpen = false;
+
+  currentQuestionIndex = 0;
+
+  constructor(private router: Router) { }
+
+  ngOnInit() {
+    this.comprobarNombre();
+    this.currentQuestionIndex = 0;
+  }
+
+  comprobarNombre() {
+    this.isModalOpen = this.nombre == "";
+  }
 
   questions = [
     'San Ignacio de Loyola nació en España',
@@ -35,12 +53,17 @@ export class PrimariaComponent  implements OnInit {
   ];
 
   images = [
-    'assets/icon/imagenSanIgnacio.jpg',
-    'assets/images/tierra-plana.jpg',
-    'assets/images/sol-estrella.jpg'
+    'assets/Loyola2.jpg',
+    'assets/10-6802.jpg',
+    'assets/2492e4c3-ec9f-4168-a0e8-3d4e827d89dd.jpeg',
+    'assets/20181011_132229.jpg',
+    'assets/regla-de-san-benito-iv_projectfull.jpg',
+    'assets/western-wall-temple-mount.jpg',
+    'assets/cq5dam.thumbnail.cropped.1500.844.jpeg',
+    'assets/saint-ignatius.jpg',
+    'assets/csm_2023_07_31__4c19546b8c.jpg',
+    'assets/09454f69d5b9c5283e3ac61c10c7ccc3_XL.jpg'
   ];
-
-  currentQuestionIndex = 0;
 
   get currentQuestion() {
     return this.questions[this.currentQuestionIndex];
@@ -53,12 +76,18 @@ export class PrimariaComponent  implements OnInit {
   answerQuestion(answer: boolean) {
     if (answer === this.correctAnswers[this.currentQuestionIndex]) {
       this.points++;
+      const toast = document.getElementById("toastVerdadero") as any;
+      toast.present();
+    } else {
+      const toast = document.getElementById("toastFallo") as any;
+      toast.present();
     }
 
     if (this.currentQuestionIndex < this.questions.length - 1) {
       this.currentQuestionIndex++;
     } else {
       console.log('No hay más preguntas');
+      this.router.navigate(["/resultado", this.nombre, this.points])
     }
   }
 }
